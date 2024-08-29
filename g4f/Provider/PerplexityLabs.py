@@ -13,7 +13,7 @@ WS_URL = "wss://www.perplexity.ai/socket.io/"
 class PerplexityLabs(AsyncGeneratorProvider, ProviderModelMixin):
     url = "https://labs.perplexity.ai"
     working = True
-    default_model = "mixtral-8x7b-instruct"
+    default_model = "llama-3.1-sonar-large-128k-online"
     models = [
         "llama-3.1-sonar-large-128k-online",
         "llama-3.1-sonar-small-128k-online",

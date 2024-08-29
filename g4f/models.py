@@ -66,6 +66,7 @@ default = Model(
     name          = "",
     base_provider = "",
     best_provider = IterListProvider([
+        PerplexityLabs,
         Bing,
         You,
         OpenaiChat,
@@ -200,6 +201,14 @@ llama_3_1_405b_instruct_FP8 = Model(
     name          = "meta-llama/Meta-Llama-3.1-405B-Instruct-FP8",
     base_provider = "meta",
     best_provider = IterListProvider([HuggingChat, HuggingFace])
+)
+
+
+### PerplexityLabs ###
+llama_3_1_sonar_large_128k_online = Model(
+    name          = "llama-3.1-sonar-large-128k-online",
+    base_provider = "openai",
+    best_provider = PerplexityLabs
 )
 
 
@@ -513,6 +522,9 @@ class ModelUtils:
         'llama-3.1-405b': llama_3_1_405b_instruct_FP8,
         'llama-3.1-70b-instruct': llama_3_1_70b_instruct,
         'llama-3.1-405b-instruct': llama_3_1_405b_instruct_FP8,
+                
+        ### PerplexityLabs ###
+        'llama-3.1-sonar-large-128k-online': llama_3_1_sonar_large_128k_online,
         
         ### Mistral (Opensource) ###
         'mixtral-8x7b': mixtral_8x7b,
