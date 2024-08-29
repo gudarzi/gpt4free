@@ -161,52 +161,82 @@ gigachat = Model(
 
 
 ### Meta ###
-meta = Model(
-    name          = "meta",
-    base_provider = "meta",
-    best_provider = MetaAI
-)
+# meta = Model(
+#     name          = "meta",
+#     base_provider = "meta",
+#     best_provider = MetaAI
+# )
 
-llama_3_8b_instruct = Model(
-    name          = "meta-llama/Meta-Llama-3-8B-Instruct",
-    base_provider = "meta",
-    best_provider = IterListProvider([DeepInfra, PerplexityLabs, Replicate])
-)
+# llama_3_8b_instruct = Model(
+#     name          = "meta-llama/Meta-Llama-3-8B-Instruct",
+#     base_provider = "meta",
+#     best_provider = IterListProvider([DeepInfra, PerplexityLabs, Replicate])
+# )
 
-llama_3_70b_instruct = Model(
-    name          = "meta-llama/Meta-Llama-3-70B-Instruct",
-    base_provider = "meta",
-    best_provider = IterListProvider([DeepInfra, PerplexityLabs, Replicate])
-)
+# llama_3_70b_instruct = Model(
+#     name          = "meta-llama/Meta-Llama-3-70B-Instruct",
+#     base_provider = "meta",
+#     best_provider = IterListProvider([DeepInfra, PerplexityLabs, Replicate])
+# )
 
-llama_3_70b_instruct = Model(
-    name          = "meta/meta-llama-3-70b-instruct",
-    base_provider = "meta",
-    best_provider = IterListProvider([ReplicateHome, TeachAnything])
-)
+# llama_3_70b_instruct = Model(
+#     name          = "meta/meta-llama-3-70b-instruct",
+#     base_provider = "meta",
+#     best_provider = IterListProvider([ReplicateHome, TeachAnything])
+# )
 
-llama_3_70b_chat_hf = Model(
-    name          = "meta-llama/Llama-3-70b-chat-hf",
-    base_provider = "meta",
-    best_provider = IterListProvider([DDG])
-)
+# llama_3_70b_chat_hf = Model(
+#     name          = "meta-llama/Llama-3-70b-chat-hf",
+#     base_provider = "meta",
+#     best_provider = IterListProvider([DDG])
+# )
 
-llama_3_1_70b_instruct = Model(
-    name          = "meta-llama/Meta-Llama-3.1-70B-Instruct",
-    base_provider = "meta",
-    best_provider = IterListProvider([HuggingChat, HuggingFace])
-)
+# llama_3_1_70b_instruct = Model(
+#     name          = "meta-llama/Meta-Llama-3.1-70B-Instruct",
+#     base_provider = "meta",
+#     best_provider = IterListProvider([HuggingChat, HuggingFace])
+# )
 
-llama_3_1_405b_instruct_FP8 = Model(
-    name          = "meta-llama/Meta-Llama-3.1-405B-Instruct-FP8",
-    base_provider = "meta",
-    best_provider = IterListProvider([HuggingChat, HuggingFace])
-)
+# llama_3_1_405b_instruct_FP8 = Model(
+#     name          = "meta-llama/Meta-Llama-3.1-405B-Instruct-FP8",
+#     base_provider = "meta",
+#     best_provider = IterListProvider([HuggingChat, HuggingFace])
+# )
 
 
 ### PerplexityLabs ###
 llama_3_1_sonar_large_128k_online = Model(
     name          = "llama-3.1-sonar-large-128k-online",
+    base_provider = "openai",
+    best_provider = PerplexityLabs
+)
+llama_3_1_sonar_small_128k_online = Model(
+    name          = "llama-3.1-sonar-small-128k-online",
+    base_provider = "openai",
+    best_provider = PerplexityLabs
+)
+llama_3_1_sonar_large_128k_chat = Model(
+    name          = "llama-3.1-sonar-large-128k-chat",
+    base_provider = "openai",
+    best_provider = PerplexityLabs
+)
+llama_3_1_sonar_small_128k_chat = Model(
+    name          = "llama-3.1-sonar-small-128k-chat",
+    base_provider = "openai",
+    best_provider = PerplexityLabs
+)
+llama_3_1_70b_instruct = Model(
+    name          = "llama-3.1-70b-instruct",
+    base_provider = "openai",
+    best_provider = PerplexityLabs
+)
+nemotron_4_340b_instruct = Model(
+    name          = "nemotron-4-340b-instruct",
+    base_provider = "openai",
+    best_provider = PerplexityLabs
+)
+mixtral_8x7b_instruct = Model(
+    name          = "mixtral-8x7b-instruct",
     base_provider = "openai",
     best_provider = PerplexityLabs
 )
@@ -361,11 +391,11 @@ reka_core = Model(
 
 
 ### NVIDIA ###
-nemotron_4_340b_instruct = Model(
-    name = 'nemotron-4-340b-instruct',
-    base_provider = 'NVIDIA',
-    best_provider = IterListProvider([PerplexityLabs])
-)
+# nemotron_4_340b_instruct = Model(
+#     name = 'nemotron-4-340b-instruct',
+#     base_provider = 'NVIDIA',
+#     best_provider = IterListProvider([PerplexityLabs])
+# )
 
 
 ### Blackbox ###
@@ -511,20 +541,26 @@ class ModelUtils:
         'gpt-4-turbo'    : gpt_4_turbo,
         
         ### Meta ###
-        "meta-ai": meta,
-        
-        'llama-3-8b-instruct': llama_3_8b_instruct,
-        'llama-3-70b-instruct': llama_3_70b_instruct,
-        'llama-3-70b-chat': llama_3_70b_chat_hf, 
-        'llama-3-70b-instruct': llama_3_70b_instruct, 
-        
-        'llama-3.1-70b': llama_3_1_70b_instruct,
-        'llama-3.1-405b': llama_3_1_405b_instruct_FP8,
-        'llama-3.1-70b-instruct': llama_3_1_70b_instruct,
-        'llama-3.1-405b-instruct': llama_3_1_405b_instruct_FP8,
+        # "meta-ai": meta,        
+        # 'llama-3-8b-instruct': llama_3_8b_instruct,
+        # 'llama-3-70b-instruct': llama_3_70b_instruct,
+        # 'llama-3-70b-chat': llama_3_70b_chat_hf, 
+        # 'llama-3-70b-instruct': llama_3_70b_instruct,         
+        # 'llama-3.1-70b': llama_3_1_70b_instruct,
+        # 'llama-3.1-405b': llama_3_1_405b_instruct_FP8,
+        # 'llama-3.1-70b-instruct': llama_3_1_70b_instruct,
                 
         ### PerplexityLabs ###
         'llama-3.1-sonar-large-128k-online': llama_3_1_sonar_large_128k_online,
+        "llama-3.1-sonar-small-128k-online": llama_3_1_sonar_small_128k_online,
+        "llama-3.1-sonar-large-128k-chat": llama_3_1_sonar_large_128k_chat,
+        "llama-3.1-sonar-small-128k-chat": llama_3_1_sonar_small_128k_chat,
+        # "llama-3.1-8b-instruct": llama_3_1_8b_instruct,
+        "llama-3.1-70b-instruct": llama_3_1_70b_instruct,
+        # "gemma-2-9b-it": gemma_2_9b_it,
+        # "gemma-2-27b-it": gemma_2_27b_it,
+        "nemotron-4-340b-instruct": nemotron_4_340b_instruct,
+        "mixtral-8x7b-instruct": mixtral_8x7b_instruct,
         
         ### Mistral (Opensource) ###
         'mixtral-8x7b': mixtral_8x7b,
@@ -570,7 +606,7 @@ class ModelUtils:
         'reka': reka_core,
 
         ### NVIDIA ###
-        'nemotron-4-340b-instruct': nemotron_4_340b_instruct,
+        # 'nemotron-4-340b-instruct': nemotron_4_340b_instruct,
         
         ### Blackbox ###
         'blackbox': blackbox,
