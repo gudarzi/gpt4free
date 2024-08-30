@@ -57,7 +57,7 @@ class ImagesGenerateForm(BaseModel):
 
 class AppConfig():
     list_ignored_providers: Optional[list[str]] = None
-    g4f_api_key: Optional[str] = None
+    g4f_api_key: Optional[str] = "MY_SUPER_SECRET_API_KEY"
     ignore_cookie_files: bool = False
     defaults: dict = {}
 
@@ -70,24 +70,30 @@ class Api:
     def __init__(self, app: FastAPI) -> None:
         self.app = app
         self.client = AsyncClient()
-        self.get_g4f_api_key = APIKeyHeader(name="g4f-api-key")
+        self.get_g4f_api_key = APIKeyHeader(name="api-key")
 
     def register_authorization(self):
         @self.app.middleware("http")
         async def authorization(request: Request, call_next):
-            if AppConfig.g4f_api_key and request.url.path in ["/v1/chat/completions", "/v1/completions"]:
+            if AppConfig.g4f_api_key and request.url.path in ["/v1","/v1/models","/v1/chat/completions", "/v1/completions","/v1/images/generations"]:
                 try:
                     user_g4f_api_key = await self.get_g4f_api_key(request)
-                except HTTPException as e:
-                    if e.status_code == 403:
+                except:                    
+                    try:
+                        auth_header = request.headers.get("authorization")
+                        if auth_header is not None:
+                            auth_header = auth_header.split(None, 1)[-1]
+                            if auth_header and auth_header != "Bearer":
+                                user_g4f_api_key = auth_header
+                    except:
                         return JSONResponse(
                             status_code=HTTP_401_UNAUTHORIZED,
-                            content=jsonable_encoder({"detail": "G4F API key required"}),
+                            content=jsonable_encoder({"detail": "API key required"}),
                         )
                 if not secrets.compare_digest(AppConfig.g4f_api_key, user_g4f_api_key):
                     return JSONResponse(
                         status_code=HTTP_403_FORBIDDEN,
-                        content=jsonable_encoder({"detail": "Invalid G4F API key"}),
+                        content=jsonable_encoder({"detail": "Invalid API key"}),
                     )
             return await call_next(request)
 
