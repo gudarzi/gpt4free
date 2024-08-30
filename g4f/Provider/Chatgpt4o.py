@@ -14,7 +14,7 @@ class Chatgpt4o(AsyncProvider, ProviderModelMixin):
     _post_id = None
     _nonce = None
     default_model = 'gpt-4o'
-
+    supports_stream=True
 
     @classmethod
     async def create_async(

@@ -34,10 +34,13 @@ class GeminiPro(AsyncGeneratorProvider, ProviderModelMixin):
         connector: BaseConnector = None,
         **kwargs
     ) -> AsyncResult:
+        
+        api_key="MY_SUPER_SECRET_API_KEY"
+        
         model = cls.get_model(model)
 
-        if not api_key:
-            raise MissingAuthError('Add a "api_key"')
+        # if not api_key:
+        #     raise MissingAuthError('Add a "api_key"')
 
         headers = params = None
         if use_auth_header:

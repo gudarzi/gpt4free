@@ -162,6 +162,45 @@ gigachat = Model(
 )
 
 
+### gg_gpt4o ###
+gg_gpt4o = Model(
+    name='gpt-4o',
+    base_provider='openai',
+    best_provider=Chatgpt4o
+)
+
+
+### ChatGot ###
+chatgot_gemini_pro = Model(
+    name='gemini-pro',
+    base_provider='openai',
+    best_provider=ChatGot
+)
+
+
+### DDG ###
+ddg_gpt_4o_mini = Model(
+    name='gpt-4o-mini',
+    base_provider='openai',
+    best_provider=DDG
+)
+ddg_claude_3_haiku_20240307 = Model(
+    name='claude-3-haiku-20240307',
+    base_provider='openai',
+    best_provider=DDG
+)
+ddg_Meta_Llama_3_1_70B_Instruct_Turbo = Model( 
+    name='meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo',
+    base_provider='openai',
+    best_provider=DDG
+)
+ddg_Mixtral_8x7B_Instruct_v0_1 = Model( 
+    name='mistralai/Mixtral-8x7B-Instruct-v0.1',
+    base_provider='openai',
+    best_provider=DDG
+)
+
+
 ### Groq ###
 groq_mixtral_8_7b_32768 = Model(
     name="mixtral-8x7b-32768",
@@ -353,29 +392,28 @@ Phi_3_mini_4k_instruct = Model(
 
 ### Google ###
 # gemini
-gemini = Model(
-    name='gemini',
-    base_provider='Google',
-    best_provider=Gemini
-)
-
 gemini_pro = Model(
     name='gemini-pro',
-    base_provider='Google',
-    best_provider=IterListProvider(
-        [GeminiPro, You, ChatGot, GeminiProChat, Liaobots, LiteIcoding])
+    base_provider='openai',
+    best_provider=GeminiPro
 )
 
-gemini_flash = Model(
-    name='gemini-flash',
-    base_provider='Google',
-    best_provider=IterListProvider([Liaobots])
+gemini_1_5_pro_latest = Model(
+    name='gemini-1.5-pro-latest',
+    base_provider='openai',
+    best_provider=GeminiPro
 )
 
-gemini_1_5 = Model(
-    name='gemini-1.5',
-    base_provider='Google',
-    best_provider=IterListProvider([LiteIcoding])
+gemini_1_5_flash = Model(
+    name='gemini-1.5-flash',
+    base_provider='openai',
+    best_provider=GeminiPro
+)
+
+gemini_pro_vision = Model(
+    name='gemini-pro-vision',
+    base_provider='openai',
+    best_provider=GeminiPro
 )
 
 # gemma
@@ -472,7 +510,7 @@ reka_core = Model(
 
 ### Blackbox ###
 blackbox = Model(
-    name='blackbox',
+    name='openai',
     base_provider='Blackbox',
     best_provider=Blackbox
 )
@@ -650,10 +688,10 @@ class ModelUtils:
 
         ### Google ###
         # gemini
-        'gemini': gemini,
-        'gemini-pro': gemini_pro,
-        'gemini-pro': gemini_1_5,
-        'gemini-flash': gemini_flash,
+        "gemini-pro": gemini_pro,
+        "gemini-1.5-pro-latest": gemini_1_5_pro_latest,
+        "gemini-1.5-flash": gemini_1_5_flash,
+        "gemini-pro-vision": gemini_pro_vision,
 
         # gemma
         'gemma-2b': gemma_2b_it,
@@ -690,6 +728,18 @@ class ModelUtils:
 
         ### GigaChat ###
         'gigachat': gigachat,
+        
+        ### gg_gpt4o ###
+        "gg-gpt4o": gg_gpt4o,
+                
+        ### ChatGot ###
+        "chatgot-gemini-pro": chatgot_gemini_pro,
+        
+        ### DDG ###
+        "ddg-gpt-4o-mini": ddg_gpt_4o_mini,
+        "ddg-claude-3-haiku-20240307": ddg_claude_3_haiku_20240307,
+        "ddg-Meta-Llama-3.1-70B-Instruct-Turbo": ddg_Meta_Llama_3_1_70B_Instruct_Turbo,
+        "ddg-Mixtral-8x7B-Instruct-v0.1": ddg_Mixtral_8x7B_Instruct_v0_1,
 
         ### Groq ###
         'groq-mixtral-8x7b-32768': groq_mixtral_8_7b_32768,
