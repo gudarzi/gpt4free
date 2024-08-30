@@ -22,6 +22,7 @@ from .Provider import (
     GeminiPro,
     GeminiProChat,
     GigaChat,
+    Groq,
     HuggingChat,
     HuggingFace,
     Koala,
@@ -160,6 +161,37 @@ gigachat = Model(
 )
 
 
+### Groq ###
+groq_mixtral_8_7b_32768 = Model(
+    name          = "mixtral-8x7b-32768",
+    base_provider = "openai",
+    best_provider = Groq
+)
+groq_gemma_7b_it = Model( name = "gemma-7b-it", base_provider = "openai", best_provider = Groq )
+
+groq_distil_whisper_large_v3_en = Model( name = "distil-whisper-large-v3-en", base_provider = "openai", best_provider = Groq )
+
+groq_gemma2_9b_it = Model( name = "gemma2-9b-it", base_provider = "openai", best_provider = Groq )
+
+groq_gemma_7b_it = Model( name = "gemma-7b-it", base_provider = "openai", best_provider = Groq )
+
+groq_llama3_groq_70b_8192_tool_use_preview = Model( name = "llama3-groq-70b-8192-tool-use-preview", base_provider = "openai", best_provider = Groq )
+
+groq_llama3_groq_8b_8192_tool_use_preview = Model( name = "llama3-groq-8b-8192-tool-use-preview", base_provider = "openai", best_provider = Groq )
+
+groq_llama_3_1_70b_versatile = Model( name = "llama-3.1-70b-versatile", base_provider = "openai", best_provider = Groq )
+
+groq_llama_3_1_8b_instant = Model( name = "llama-3.1-8b-instant", base_provider = "openai", best_provider = Groq )
+
+groq_llama_guard_3_8b = Model( name = "llama-guard-3-8b", base_provider = "openai", best_provider = Groq )
+
+groq_llama3_70b_8192 = Model( name = "llama3-70b-8192", base_provider = "openai", best_provider = Groq )
+
+groq_llama3_8b_8192 = Model( name = "llama3-8b-8192", base_provider = "openai", best_provider = Groq )
+
+groq_whisper_large_v3 = Model( name = "whisper-large-v3", base_provider = "openai", best_provider = Groq )
+
+
 ### Meta ###
 # meta = Model(
 #     name          = "meta",
@@ -230,16 +262,16 @@ llama_3_1_70b_instruct = Model(
     base_provider = "openai",
     best_provider = PerplexityLabs
 )
-nemotron_4_340b_instruct = Model(
-    name          = "nemotron-4-340b-instruct",
-    base_provider = "openai",
-    best_provider = PerplexityLabs
-)
-mixtral_8x7b_instruct = Model(
-    name          = "mixtral-8x7b-instruct",
-    base_provider = "openai",
-    best_provider = PerplexityLabs
-)
+# nemotron_4_340b_instruct = Model(
+#     name          = "nemotron-4-340b-instruct",
+#     base_provider = "openai",
+#     best_provider = PerplexityLabs
+# )
+# mixtral_8x7b_instruct = Model(
+#     name          = "mixtral-8x7b-instruct",
+#     base_provider = "openai",
+#     best_provider = PerplexityLabs
+# )
 
 
 ### Mistral ###
@@ -559,8 +591,8 @@ class ModelUtils:
         "llama-3.1-70b-instruct": llama_3_1_70b_instruct,
         # "gemma-2-9b-it": gemma_2_9b_it,
         # "gemma-2-27b-it": gemma_2_27b_it,
-        "nemotron-4-340b-instruct": nemotron_4_340b_instruct,
-        "mixtral-8x7b-instruct": mixtral_8x7b_instruct,
+        # "nemotron-4-340b-instruct": nemotron_4_340b_instruct,
+        # "mixtral-8x7b-instruct": mixtral_8x7b_instruct,
         
         ### Mistral (Opensource) ###
         'mixtral-8x7b': mixtral_8x7b,
@@ -600,8 +632,6 @@ class ModelUtils:
         'claude-3-opus': claude_3,
         'claude-3-5-sonnet': claude_3_5,
         
-        
-
         ### Reka AI ###
         'reka': reka_core,
 
@@ -618,7 +648,22 @@ class ModelUtils:
         'dbrx-instruct': dbrx_instruct,
 
         ### GigaChat ###
-        'gigachat': gigachat,
+        'gigachat': gigachat,        
+
+        ### Groq ###
+        'groq-mixtral-8x7b-32768': groq_mixtral_8_7b_32768,
+        'groq-gemma-7b-it': groq_gemma_7b_it,
+        'groq-distil-whisper-large-v3-en': groq_distil_whisper_large_v3_en,
+        'groq-gemma2-9b-it': groq_gemma2_9b_it,
+        'groq-gemma-7b-it': groq_gemma_7b_it,
+        'groq-llama3-groq-70b-8192-tool-use-preview':groq_llama3_groq_70b_8192_tool_use_preview,
+        'groq-llama3-groq-8b-8192-tool-use-preview': groq_llama3_groq_8b_8192_tool_use_preview,
+        'groq-llama-3.1-70b-versatile': groq_llama_3_1_70b_versatile,
+        'groq-llama-3.1-8b-instant': groq_llama_3_1_8b_instant,
+        'groq-llama-guard-3-8b': groq_llama_guard_3_8b,
+        'groq-llama3-70b-8192': groq_llama3_70b_8192,
+        'groq-llama3-8b-8192': groq_llama3_8b_8192,
+        'groq-whisper-large-v3': groq_whisper_large_v3,
         
         ### iFlytek ###
         'SparkDesk-v1.1': SparkDesk_v1_1,
