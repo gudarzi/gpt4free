@@ -31,6 +31,7 @@ class Groq(Openai):
         api_base: str = "https://api.groq.com/openai/v1",
         **kwargs
     ) -> AsyncResult:
+        kwargs["api_key"] = "MY_SUPER_SECRET_API_KEY"
         return super().create_async_generator(
             model, messages, api_base=api_base, **kwargs
         )
