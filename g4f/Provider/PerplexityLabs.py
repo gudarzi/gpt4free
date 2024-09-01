@@ -21,10 +21,6 @@ class PerplexityLabs(AsyncGeneratorProvider, ProviderModelMixin):
         "llama-3.1-sonar-small-128k-chat",
         "llama-3.1-8b-instruct",
         "llama-3.1-70b-instruct",
-        "gemma-2-9b-it",
-        "gemma-2-27b-it",
-        "nemotron-4-340b-instruct",
-        "mixtral-8x7b-instruct"
     ]
 
     @classmethod
