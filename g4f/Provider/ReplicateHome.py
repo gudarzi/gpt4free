@@ -14,9 +14,9 @@ class ReplicateHome(AsyncGeneratorProvider, ProviderModelMixin):
     url = "https://replicate.com"
     parent = "Replicate"
     working = True
-    default_model = 'stability-ai/stable-diffusion-3'
+    default_model = 'meta/meta-llama-3-70b-instruct'
     models = [
-		# Models for image generation
+        # Models for image generation
         'stability-ai/stable-diffusion-3',
         'bytedance/sdxl-lightning-4step',
         'playgroundai/playground-v2.5-1024px-aesthetic',
@@ -29,7 +29,7 @@ class ReplicateHome(AsyncGeneratorProvider, ProviderModelMixin):
     ]
 
     versions = {
-		# Model versions for generating images
+        # Model versions for generating images
         'stability-ai/stable-diffusion-3': [
             "527d2a6296facb8e47ba1eaf17f142c240c19a30894f437feee9b91cc29d8e4f"
         ],
@@ -42,7 +42,6 @@ class ReplicateHome(AsyncGeneratorProvider, ProviderModelMixin):
         'black-forest-labs/flux-schnell': [
             "f2ab8a5bfe79f02f0789a146cf5e73d2a4ff2684a98c2b303d1e1ff3814271db"
         ],
-        
         
         # Model versions for text generation
         'meta/meta-llama-3-70b-instruct': [
