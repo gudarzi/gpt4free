@@ -59,6 +59,24 @@ class ReplicateHome(AsyncGeneratorProvider, ProviderModelMixin):
     image_models = {"stability-ai/stable-diffusion-3", "bytedance/sdxl-lightning-4step", "playgroundai/playground-v2.5-1024px-aesthetic", "black-forest-labs/flux-schnell"}
     text_models = {"meta/meta-llama-3-70b-instruct", "mistralai/mixtral-8x7b-instruct-v0.1", "google-deepmind/gemma-2b-it"}
 
+    model_aliases = {
+        "sd-3": "stability-ai/stable-diffusion-3",
+        "sdxl": "bytedance/sdxl-lightning-4step",
+        "playground-v2.5": "playgroundai/playground-v2.5-1024px-aesthetic",
+        "llama-3-70b": "meta/meta-llama-3-70b-instruct",
+        "mixtral-8x7b": "mistralai/mixtral-8x7b-instruct-v0.1",
+        "gemma-2b": "google-deepmind/gemma-2b-it",
+    }
+
+    @classmethod
+    def get_model(cls, model: str) -> str:
+        if model in cls.models:
+            return model
+        elif model in cls.model_aliases:
+            return cls.model_aliases[model]
+        else:
+            return cls.default_model
+
     @classmethod
     async def create_async_generator(
         cls,
@@ -80,6 +98,7 @@ class ReplicateHome(AsyncGeneratorProvider, ProviderModelMixin):
         extra_data: Dict[str, Any] = {},
         **kwargs: Any
     ) -> Union[str, ImageResponse]:
+        model = cls.get_model(model)  # Use the get_model method to resolve model name
         headers = {
             'Accept-Encoding': 'gzip, deflate, br',
             'Accept-Language': 'en-US',
@@ -113,7 +132,7 @@ class ReplicateHome(AsyncGeneratorProvider, ProviderModelMixin):
                 "version": version
             }
             if api_key is None:
-                data["model"] = cls.get_model(model)
+                data["model"] = model
                 url = "https://homepage.replicate.com/api/prediction"
             else:
                 url = "https://api.replicate.com/v1/predictions"
