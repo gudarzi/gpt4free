@@ -20,6 +20,7 @@ class ReplicateHome(AsyncGeneratorProvider, ProviderModelMixin):
         'stability-ai/stable-diffusion-3',
         'bytedance/sdxl-lightning-4step',
         'playgroundai/playground-v2.5-1024px-aesthetic',
+        'black-forest-labs/flux-schnell',
         
         # Models for image generation
         'meta/meta-llama-3-70b-instruct',
@@ -38,6 +39,9 @@ class ReplicateHome(AsyncGeneratorProvider, ProviderModelMixin):
         'playgroundai/playground-v2.5-1024px-aesthetic': [
             "a45f82a1382bed5c7aeb861dac7c7d191b0fdf74d8d57c4a0e6ed7d4d0bf7d24"
         ],
+        'black-forest-labs/flux-schnell': [
+            "f2ab8a5bfe79f02f0789a146cf5e73d2a4ff2684a98c2b303d1e1ff3814271db"
+        ],
         
         
         # Model versions for text generation
@@ -52,7 +56,7 @@ class ReplicateHome(AsyncGeneratorProvider, ProviderModelMixin):
         ]
     }
 
-    image_models = {"stability-ai/stable-diffusion-3", "bytedance/sdxl-lightning-4step", "playgroundai/playground-v2.5-1024px-aesthetic"}
+    image_models = {"stability-ai/stable-diffusion-3", "bytedance/sdxl-lightning-4step", "playgroundai/playground-v2.5-1024px-aesthetic", "black-forest-labs/flux-schnell"}
     text_models = {"meta/meta-llama-3-70b-instruct", "mistralai/mixtral-8x7b-instruct-v0.1", "google-deepmind/gemma-2b-it"}
 
     @classmethod
