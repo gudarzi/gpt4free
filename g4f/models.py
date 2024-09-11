@@ -329,16 +329,39 @@ phi_3_mini_4k = Model(
 
 ### Google ###
 # gemini
+# gemini_pro = Model(
+#     name          = 'gemini-pro',
+#     base_provider = 'Google',
+#     best_provider = IterListProvider([GeminiPro, ChatGot, Liaobots])
+# )
+
+# gemini_flash = Model(
+#     name          = 'gemini-flash',
+#     base_provider = 'Google',
+#     best_provider = IterListProvider([Liaobots, Blackbox])
+# )
 gemini_pro = Model(
-    name          = 'gemini-pro',
-    base_provider = 'Google',
-    best_provider = IterListProvider([GeminiPro, ChatGot, Liaobots])
+    name='gemini-pro',
+    base_provider='openai',
+    best_provider=GeminiPro
 )
 
-gemini_flash = Model(
-    name          = 'gemini-flash',
-    base_provider = 'Google',
-    best_provider = IterListProvider([Liaobots, Blackbox])
+gemini_1_5_pro_latest = Model(
+    name='gemini-1.5-pro-latest',
+    base_provider='openai',
+    best_provider=GeminiPro
+)
+
+gemini_1_5_flash = Model(
+    name='gemini-1.5-flash',
+    base_provider='openai',
+    best_provider=GeminiPro
+)
+
+gemini_pro_vision = Model(
+    name='gemini-pro-vision',
+    base_provider='openai',
+    best_provider=GeminiPro
 )
 
 # gemma
@@ -665,8 +688,12 @@ class ModelUtils:
 ### Google ###
 # gemini
 # 'gemini': gemini,
-'gemini-pro': gemini_pro,
-'gemini-flash': gemini_flash,
+# 'gemini-pro': gemini_pro,
+# 'gemini-flash': gemini_flash,
+"gemini-pro": gemini_pro,
+"gemini-1.5-pro-latest": gemini_1_5_pro_latest,
+"gemini-1.5-flash": gemini_1_5_flash,
+"gemini-pro-vision": gemini_pro_vision,
         
 # gemma
 'gemma-2b': gemma_2b,
@@ -702,6 +729,21 @@ class ModelUtils:
 ### GigaChat ###
 'gigachat': gigachat,
         
+        
+### Groq ###
+'groq-mixtral-8x7b-32768': groq_mixtral_8_7b_32768,
+'groq-gemma-7b-it': groq_gemma_7b_it,
+'groq-distil-whisper-large-v3-en': groq_distil_whisper_large_v3_en,
+'groq-gemma2-9b-it': groq_gemma2_9b_it,
+'groq-gemma-7b-it': groq_gemma_7b_it,
+'groq-llama3-groq-70b-8192-tool-use-preview': groq_llama3_groq_70b_8192_tool_use_preview,
+'groq-llama3-groq-8b-8192-tool-use-preview': groq_llama3_groq_8b_8192_tool_use_preview,
+'groq-llama-3.1-70b-versatile': groq_llama_3_1_70b_versatile,
+'groq-llama-3.1-8b-instant': groq_llama_3_1_8b_instant,
+'groq-llama-guard-3-8b': groq_llama_guard_3_8b,
+'groq-llama3-70b-8192': groq_llama3_70b_8192,
+'groq-llama3-8b-8192': groq_llama3_8b_8192,
+'groq-whisper-large-v3': groq_whisper_large_v3,
         
 ### iFlytek ###
 'sparkdesk-v1.1': sparkdesk_v1_1,
