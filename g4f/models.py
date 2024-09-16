@@ -19,7 +19,7 @@ from .Provider import (
     DDG,
     DeepInfra,
     DeepInfraImage,
-    FluxAirforce,
+    #FluxAirforce,
     Free2GPT,
     FreeChatgpt,
     FreeGpt,
