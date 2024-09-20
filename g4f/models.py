@@ -13,6 +13,7 @@ from .Provider import (
     Blackbox,
     ChatGot,
     Chatgpt4Online,
+    ChatGpt,
     Chatgpt4o,
     ChatgptFree,
     CodeNews,
@@ -117,7 +118,7 @@ gpt_4o = Model(
     base_provider = 'OpenAI',
     best_provider = IterListProvider([
         Liaobots, Chatgpt4o, Airforce, 
-        OpenaiChat,
+        OpenaiChat
     ])
 )
 
@@ -126,7 +127,7 @@ gpt_4o_mini = Model(
     base_provider = 'OpenAI',
     best_provider = IterListProvider([
         DDG, Liaobots, You, FreeNetfly, Pizzagpt, ChatgptFree, AiChatOnline, CodeNews, MagickPen, Airforce,  
-        OpenaiChat, Koala,       
+        OpenaiChat, Koala, ChatGpt    
     ])
 )
 
