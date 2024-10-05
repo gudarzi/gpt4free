@@ -167,7 +167,7 @@ class Api:
                         **AppConfig.defaults,
                         **config.dict(exclude_none=True),
                     },
-                    ignored=AppConfig.list_ignored_providers
+                    ignored=AppConfig.ignored_providers
                 )
                 if not config.stream:
                     return JSONResponse((await response).to_json())

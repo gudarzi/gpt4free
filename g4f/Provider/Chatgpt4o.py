@@ -13,8 +13,14 @@ class Chatgpt4o(AsyncProvider, ProviderModelMixin):
     working = True
     _post_id = None
     _nonce = None
-    default_model = 'gpt-4o'
-    supports_stream=True
+    default_model = 'gpt-4o-mini-2024-07-18'
+    models = [
+        'gpt-4o-mini-2024-07-18',
+    ]
+    model_aliases = {
+        "gpt-4o-mini": "gpt-4o-mini-2024-07-18",
+    }
+
 
     @classmethod
     async def create_async(
